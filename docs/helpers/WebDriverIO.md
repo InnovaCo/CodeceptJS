@@ -1,7 +1,7 @@
 # WebDriverIO
 
 WebDriverIO helper which wraps [webdriverio](http://webdriver.io/) library to
-manipulate browser using Selenium WebDriver, PhantomJS.
+manipulate browser using Selenium WebDriver or PhantomJS.
 
 #### Selenium Installation
 
@@ -18,9 +18,7 @@ It allows you to run Selenium tests on a server without a GUI installed.
 
 ### Configuration
 
-This helper should be configured in codecept.conf.js
-
-#### Desktop configuration
+This helper should be configured in codecept.json
 
 -   `url` - base url of website to be tested
 -   `browser` - browser in which perform testing
@@ -34,19 +32,8 @@ This helper should be configured in codecept.conf.js
 
 Example:
 
-```js
+```json
 {
-<<<<<<< HEAD
-   helpers: {
-     WebDriverIO : {
-       browser: "chrome",
-       restart: false,
-       windowSize: "maximize",
-       timeouts: {
-         script: 60000,
-         page load: 10000,
-         implicit : 5000
-=======
    "helpers": {
      "WebDriverIO" : {
        "browser": "chrome",
@@ -56,7 +43,6 @@ Example:
          "script": 60000,
          "page load": 10000,
          "implicit" : 5000
->>>>>>> master
        }
      }
    }
@@ -72,19 +58,19 @@ need to update the `helpers.WebDriverIO.desiredCapabilities.proxy` key.
 
 ```js
 {
-    helpers: {
-        WebDriverIO: {
-            desiredCapabilities: {
-                proxy: {
-                    proxyType: "manual|pac",
-                    proxyAutoconfigUrl: "URL TO PAC FILE",
-                    httpProxy: "PROXY SERVER",
-                    sslProxy: "PROXY SERVER",
-                    ftpProxy: "PROXY SERVER",
-                    socksProxy: "PROXY SERVER",
-                    socksUsername: "USERNAME",
-                    socksPassword: "PASSWORD",
-                    noProxy: "BYPASS ADDRESSES"
+    "helpers": {
+        "WebDriverIO": {
+            "desiredCapabilities": {
+                "proxy": {
+                    "proxyType": "manual|pac",
+                    "proxyAutoconfigUrl": "URL TO PAC FILE",
+                    "httpProxy": "PROXY SERVER",
+                    "sslProxy": "PROXY SERVER",
+                    "ftpProxy": "PROXY SERVER",
+                    "socksProxy": "PROXY SERVER",
+                    "socksUsername": "USERNAME",
+                    "socksPassword": "PASSWORD",
+                    "noProxy": "BYPASS ADDRESSES"
                 }
             }
         }
@@ -96,15 +82,15 @@ For example,
 
 ```js
 {
-    helpers: {
-        WebDriverIO: {
-            desiredCapabilities: {
-                proxy: {
-                    proxyType: "manual",
-                    httpProxy: "http://corporate.proxy:8080",
-                    socksUsername: "codeceptjs",
-                    socksPassword: "secret",
-                    noProxy: "127.0.0.1,localhost"
+    "helpers": {
+        "WebDriverIO": {
+            "desiredCapabilities": {
+                "proxy": {
+                    "proxyType": "manual",
+                    "httpProxy": "http://corporate.proxy:8080",
+                    "socksUsername": "codeceptjs",
+                    "socksPassword": "secret",
+                    "noProxy": "127.0.0.1,localhost"
                 }
             }
         }
@@ -125,13 +111,13 @@ service provider to connect to.
 
 ```js
 {
-    helpers:{
-        WebDriverIO: {
-            url: "YOUR_DESIERED_HOST",
-            user: "YOUR_BROWSERSTACK_USER",
-            key: "YOUR_BROWSERSTACK_KEY",
-            desiredCapabilities: {
-                browserName: "chrome",
+    "helpers":{
+        "WebDriverIO": {
+            "url": "YOUR_DESIERED_HOST",
+            "user": "YOUR_BROWSERSTACK_USER",
+            "key": "YOUR_BROWSERSTACK_KEY",
+            "desiredCapabilities": {
+                "browserName": "chrome",
 
                 // only set this if you're using BrowserStackLocal to test a local domain
                 // "browserstack.local": true,
@@ -153,17 +139,17 @@ Here is the [webdriverio docs](http://webdriver.io/guide/usage/multiremote.html)
 
 ```js
 {
-    helpers: {
-        WebDriverIO: {
-            multiremote: {
-                MyChrome: {
-                    desiredCapabilities: {
-                        browserName: "chrome"
+    "helpers": {
+        "WebDriverIO": {
+            "multiremote": {
+                "MyChrome": {
+                    "desiredCapabilities": {
+                        "browserName": "chrome"
                      }
                 },
-                MyFirefox: {
-                   desiredCapabilities: {
-                       browserName: "firefox"
+                "MyFirefox": {
+                   "desiredCapabilities": {
+                       "browserName": "firefox"
                    }
                 }
             }
@@ -182,7 +168,7 @@ this.helpers['WebDriverIO'].browser
 
 **Parameters**
 
--   `config`
+-   `config`  
 
 ## _locate
 
@@ -286,6 +272,7 @@ I.attachFile('form input[name=avatar]', 'data/avatar.jpg');
 ## cancelPopup
 
 Dismisses the active JavaScript popup, as created by window.alert|window.confirm|window.prompt.
+
 ## checkOption
 
 Selects a checkbox or radio button.
@@ -364,7 +351,6 @@ I.click({css: 'nav a.login'});
 ## defineTimeout
 
 Set [WebDriverIO timeouts](http://webdriver.io/guide/testrunner/timeouts.html) in realtime.
-
 Timeouts are expected to be passed as object:
 
 ```js
@@ -777,7 +763,6 @@ I.seeCookie('Auth');
 ## seeCurrentUrlEquals
 
 Checks that current url is equal to provided one.
-
 If a relative url provided, a configured url will be prepended to it.
 So both examples will work:
 
@@ -1040,4 +1025,4 @@ Waits for a function to return true (waits for 1sec by default).
 **Parameters**
 
 -   `fn`  
--   `sec` 
+-   `sec`  
